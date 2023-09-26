@@ -33,11 +33,5 @@ jobs:
         id: expo_build
         run: npx eas-cli build --platform android --profile development --non-interactive 
 
-      - name: Echo output 1
-        run: echo ${{ steps.expo_build.outputs.stdout }}
-
-      - name: Echo output 2
-        run: echo ${{ steps.expo_build.outputs }}
-
-      - name: Echo output 3
-        run: echo ${{ steps.expo_build.outputs.* }}
+      - name: Echo output
+        run: echo ${{ toJson(steps.expo_build.outputs) }}
