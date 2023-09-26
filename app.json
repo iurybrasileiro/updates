@@ -1,0 +1,18 @@
+{
+  "name": "updates",
+  "displayName": "updates",
+  "expo": {
+    "name": "updates",
+    "slug": "updates",
+    "ios": {
+      "bundleIdentifier": "com.updates"
+    },
+    "android": {
+      "package": "com.updates"
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "http://localhost:3000/api/manifest"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+name: Run Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    name: Run E2E Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_ACCESS_TOKEN }}
+          expo-cache: true
+
+      - name: Install app dependencies
+        run: yarn --prefer-offline
+
+      - name: Build ANDROID on EAS
+        id: expo-build
+        run: npx eas-cli build --platform android --profile development --non-interactive 
+
+      - name: Download Artifact from expo
+        run: echo {{expo-build.outputs}}
