@@ -42,7 +42,7 @@ jobs:
 
       - name: Download APK
         run: |
-          mkdir build_artifacts; cURL ${{ steps.get_apk_uri.outputs.APK_URI }} --output ./build_artifacts/$(basename ${{ steps.get_apk_uri.outputs.APK_URI }});
+          mkdir build_artifacts; curl ${{ steps.get_apk_uri.outputs.APK_URI }} --output ./build_artifacts/$(basename ${{ steps.get_apk_uri.outputs.APK_URI }});
 
       - name: List files in build_artifacts folder
         run: |
