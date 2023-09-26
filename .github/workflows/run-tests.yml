@@ -30,8 +30,8 @@ jobs:
         run: yarn --prefer-offline
 
       - name: Build ANDROID on EAS
-        id: expo-build
+        id: expo_build
         run: npx eas-cli build --platform android --profile development --non-interactive 
 
       - name: Download Artifact from expo
-        run: echo {{expo-build.outputs}}
+        run: echo ${{join(steps.expo_build.outputs.*, '\n')}}
