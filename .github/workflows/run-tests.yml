@@ -35,9 +35,9 @@ jobs:
 
       - name: Echo output
         run: |
-          export APK_URI=$(eas build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
+          export APK_URI=$(npx eas-cli build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
           echo $APK_URI 
 
       - name: Echo output
         run: |
-          echo $(eas build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
+          echo $(npx eas-cli build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
