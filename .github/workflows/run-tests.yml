@@ -34,4 +34,10 @@ jobs:
         run: npx eas-cli build --platform android --profile development --non-interactive 
 
       - name: Echo output
-        run: echo ${{ toJson(steps.expo_build.outputs) }}
+        run: |
+          export APK_URI=$(eas build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
+          echo $APK_URI 
+
+      - name: Echo output
+        run: |
+          echo $(eas build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
