@@ -33,5 +33,11 @@ jobs:
         id: expo_build
         run: npx eas-cli build --platform android --profile development --non-interactive 
 
-      - name: Download Artifact from expo
-        run: echo ${{join(steps.expo_build.outputs.*, '\n')}}
+      - name: Echo output 1
+        run: echo ${{ steps.expo_build.outputs.stdout }}
+
+      - name: Echo output 2
+        run: echo ${{ steps.expo_build.outputs }}
+
+      - name: Echo output 3
+        run: echo ${{ steps.expo_build.outputs.* }}
