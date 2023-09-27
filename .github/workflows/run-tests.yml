@@ -39,7 +39,7 @@ jobs:
         run: |
           export APK_URI=https://expo.dev/artifacts/eas/557ovkam4ccgVGyMkAc9fS.apk
           echo "APK_URI=$APK_URI" >> $GITHUB_OUTPUT
-          echo "APK_NAME=$$(basename $APK_URI)" >> $GITHUB_OUTPUT
+          echo "APK_NAME=$(basename $APK_URI)" >> $GITHUB_OUTPUT
 
       - name: Download APK
         run: |
