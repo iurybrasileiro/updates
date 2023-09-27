@@ -43,8 +43,8 @@ jobs:
 
       - name: Download APK
         run: |
-          curl ${{ steps.get_apk_uri.outputs.APK_URI }} --output /${{ steps.get_apk_uri.outputs.APK_NAME }};
+          curl ${{ steps.get_apk_uri.outputs.APK_URI }} --output ${{ steps.get_apk_uri.outputs.APK_NAME }};
 
       - name: List files in build_artifacts folder
         run: |
-          ls /
+          ls .
