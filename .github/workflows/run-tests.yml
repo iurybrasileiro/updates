@@ -29,9 +29,9 @@ jobs:
       - name: Install app dependencies
         run: yarn --prefer-offline
 
-      - name: Build ANDROID on EAS
-        id: expo_build
-        run: npx eas-cli build --platform android --profile development --non-interactive
+      # - name: Build ANDROID on EAS
+      #   id: expo_build
+      #   run: npx eas-cli build --platform android --profile development --non-interactive
 
       # export APK_URI=$(npx eas-cli build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
       - name: Get APK URI
