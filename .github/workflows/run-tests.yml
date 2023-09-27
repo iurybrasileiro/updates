@@ -29,21 +29,20 @@ jobs:
       - name: Install app dependencies
         run: yarn --prefer-offline
 
-      # - name: Build ANDROID on EAS
-      #   id: expo_build
-      #   run: npx eas-cli build --platform android --profile development --non-interactive
+      - name: Build ANDROID on EAS
+        id: expo_build
+        run: npx eas-cli build --platform android --profile development --non-interactive
 
-      # export APK_URI=$(npx eas-cli build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
-      - name: Get APK URI
-        id: get_apk_uri
+      - name: Define APK data
+        id: define_apk_data
         run: |
-          export APK_URI=https://expo.dev/artifacts/eas/557ovkam4ccgVGyMkAc9fS.apk
+          export APK_URI=$(npx eas-cli build:list --json --limit=1 --non-interactive | jq -r '.[0].artifacts.buildUrl');
           echo "APK_URI=$APK_URI" >> $GITHUB_OUTPUT
           echo "APK_NAME=$(basename $APK_URI)" >> $GITHUB_OUTPUT
 
       - name: Download APK
         run: |
-          curl ${{ steps.get_apk_uri.outputs.APK_URI }} --output ${{ steps.get_apk_uri.outputs.APK_NAME }};
+          curl ${{ steps.define_apk_data.outputs.APK_URI }} --output ${{ steps.define_apk_data.outputs.APK_NAME }};
 
       - name: List files in build_artifacts folder
         run: |
